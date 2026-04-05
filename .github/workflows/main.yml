@@ -1,0 +1,53 @@
+.name: Saif-Ullah-Bot-CI
+
+
+
+on:
+
+  push:
+
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+
+
+jobs:
+
+  run-bot:
+
+    runs-on: ubuntu-latest
+
+
+
+    steps:
+
+      - name: Checkout Code
+
+        uses: actions/checkout@v4
+
+
+
+      - name: Setup Node.js 24
+
+        uses: actions/setup-node@v4
+
+        with:
+
+          node-version: '24'
+
+
+
+      - name: Install Dependencies
+
+        run: npm install
+
+
+
+      - name: Start Bot
+
+        run: npm start
+
+        env:
+
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
